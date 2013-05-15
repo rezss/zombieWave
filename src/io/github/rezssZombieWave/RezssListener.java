@@ -1,9 +1,6 @@
 package io.github.rezssZombieWave;
 
 import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -22,7 +19,6 @@ import org.bukkit.util.Vector;
 public class RezssListener implements Listener
 {
   private final RezssMain plugin;
-  private int timesJumped;
 
   public RezssListener(RezssMain plugin)
   {
@@ -130,9 +126,13 @@ public class RezssListener implements Listener
     {
       // if (timesJumped != 2)
       // {
+      if (player.getExp() >= 1.0)
+      {
         player.setFlying(false);
         player.setVelocity(player.getVelocity().add(jump));
-         new Thread(new RezssDoubleJump(plugin, evt.getPlayer())).start();
+        new Thread(new RezssDoubleJump(plugin, evt.getPlayer())).start();
+      }
+        
 //        evt.getPlayer().setExp((float) 0.1);
 //        timesJumped++;
       // }
