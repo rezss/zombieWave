@@ -119,39 +119,17 @@ public class RezssListener implements Listener
   {
     Player player = evt.getPlayer();
     Vector jump = player.getLocation().getDirection().multiply(0.2).setY(1);
-//    Location loc = player.getLocation();
-//    Block block = loc.add(0, -2, 0).getBlock();
 
     if (evt.isFlying() && evt.getPlayer().getGameMode() != GameMode.CREATIVE)
     {
-      // if (timesJumped != 2)
-      // {
+      player.setFlying(false);
       if (player.getExp() >= 1.0)
       {
-        player.setFlying(false);
+        
         player.setVelocity(player.getVelocity().add(jump));
         new Thread(new RezssDoubleJump(plugin, evt.getPlayer())).start();
       }
-        
-//        evt.getPlayer().setExp((float) 0.1);
-//        timesJumped++;
-      // }
-      // else if (timesJumped == 2)
-      // {
-      //   if (block.getType() != Material.AIR)
-      //   {
-      //     player.setAllowFlight(true);
-      //     timesJumped = 0;
-      //   }
-      //   else
-      //   {
-      //     player.setFlying(false);
-      //     player.setAllowFlight(true);
-      //   }
-      // }
       evt.setCancelled(true);
-//      System.out.println(timesJumped);
     }
-    // evt.getPlayer().setVelocity(new Vector(0.0, 0.0, 0.0).add((evt.getPlayer()).getLocation().getDirection().normalize().setY(0.5)));
   }
 }

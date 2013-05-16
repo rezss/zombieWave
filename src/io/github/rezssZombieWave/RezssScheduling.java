@@ -68,7 +68,7 @@ public class RezssScheduling extends BukkitRunnable
     for (int i = 0; i < zombieCount; i++)
     {
       Location loc = new Location(plugin.getServer().getWorld("world"), 
-        -random.nextInt(4) - 21, 31, random.nextInt(6) + 330, -90, 0);
+        -random.nextInt(4) - 21, 31, random.nextInt(6) + 330, 90, 0);
       
       plugin.entityList.add(
           plugin.getServer().getWorld("world").spawnEntity(
